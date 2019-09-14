@@ -286,8 +286,88 @@ v+u={u}'+{v}'
 u=\frac{mv}{M}
 \end{equation}
 
-$\vec{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \varphi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\varphi \right )
-\vec{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right )$
+
+$\iint \limits_{ x^{2}+z^{2}=R^{2} \\ -d\leq y\leq d }$
+
+$\iint \limits_{ \substack{x^{2}+z^{2}=R^{2} \\ -d\leq y\leq d }} \rho {d}s\cdot\left ( x^2+y^2 \right )
+=\iint \limits_{\left [ 0,2\pi \right ] \times\left [ -d,d \right ] } \rho R\left ( R^2\cos^2\theta +y^2 \right ){d}\theta {d}y
+=\frac{MR^2}{2}+\frac{Md^2}{3}  $
+
+%2.1 
+$
+\overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\
+
+\overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right ) \\
+
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi + F_0 R\sin\varphi- F_\frac{n}{2} R\sin\varphi
+ \\ 
+D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_0R\cos\varphi-F_\frac{a}{2}R\cos\varphi 
+\\
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+$
+
+%2.2
+$
+
+\overrightarrow{OA_k}=\left ( R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos \psi ,R\sin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right ),R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin \psi \right ) \\
+
+\overrightarrow{F_k}=\left ( F_k\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\\cos\varphi ,F_ksin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\left ( \overrightarrow{F_k} \times \overrightarrow{OA_k}\right )|_y=F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\left ( \sin\varphi\cos\psi-\cos\varphi\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\psi \right )\\
+
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin\psi   \\
+
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}}F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\varphi \\ 
+D=2\sum_{k=1}^{\frac{n}{2}}F_kR\cos^2\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi
+\\
+
+$
+%2.3
+
+$
+\overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\
+
+\overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right ) \\
+
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi+F_kR\sin\varphi \\ 
+D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_k R\cos\varphi 
+\\
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin\psi
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

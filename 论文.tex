@@ -105,36 +105,38 @@
 
 	\subsubsection{模型的建立}
 为了使每个人的用力都尽可能小并简化问题，本文首先设定所有人的用力大小、时机、方向相同，鼓与球相撞时速度恰达到最大，鼓的加速度为0，设球从水平面以上40cm的位置开始下落的时间点为原点，队员按照周期用力，球与鼓的运动分析如下：在时间段$\left [ 0,t \right ]$内，人对绳拉力为$F_0$，鼓静止，球自由落体；在时间段$\left [ t,T-t \right ] $内，人对绳拉力为F，鼓先做加速运动，球自由落体，在$\frac{T}{2}$时与球完全弹性碰撞，由动量守恒可知，
-%\begin{equation}
-%\left\{
-%
-%\begin{align} 
-%
-% mv-Mu=-m{v}'+M{u}'    \\
-%	v+u={u}'+{v}' 
-%
-%\end{align}
-%
-%\right.
-%
-%\end{equation}
+
+\begin{equation}
+\begin{cases}
 
 
-可得 $u=-{u}'$ $v=-{v}'$ 球与鼓速度方向反转，速度大小不变，鼓做减速运动，球做上抛运动；在时间段$ \left [ T-t,T \right ]$内，人对绳拉力为$F_0$，鼓静止，球做上抛运动直至最高点，周期为T。
-%\begin{equation}
-%\left\{
-%
-%\begin{align} 
-%     M\cdot\frac{d^{2}s}{dt^{2}}+\frac{nF}{l}\cdot s = \frac{nFh}{l}-Mg \\
-%	    s\left ( 0\right )=0 \\
-%       s'\left ( 0 \right )=0 \\
-%s'(\frac{T}{2}-t)=0
-%
-% \end{align}
-%
-%\right.
-%
-%\end{equation}
+mv-Mu=-m{v}'+M{u}'    \\
+	v+u={u}'+{v}' 
+
+\end{cases}
+\end{equation}
+
+
+可得 $u=-{u}'$, $v=-{v}'$ 球与鼓速度方向反转，速度大小不变，鼓做减速运动，球做上抛运动；在时间段$ \left [ T-t,T \right ]$内，人对绳拉力为$F_0$，鼓静止，球做上抛运动直至最高点，周期为$T$。可列运动方程如下：
+
+\begin{equation}
+\begin{cases}
+     M\cdot\frac{d^{2}s}{dt^{2}}+\frac{nF}{l}\cdot s = \frac{nFh}{l}-Mg \\
+	    s\left ( 0\right )=0 \\
+       s'\left ( 0 \right )=0 \\
+s'(\frac{T}{2}-t)=0
+\end{cases}
+\end{equation}
+\par
+解得，
+\begin{equation}
+\begin{cases}
+    t=-\frac{\pi}{2}\sqrt{\frac{lM}{nF}}+\frac{v}{g}\\
+	T=\frac{2v}{g}
+\end{cases}
+\end{equation}
+
+
 \par
 同时，人数不可能无限增加，因此只讨论$n\leq 20$时的情况；人的手臂长度也是有限的，在拉绳时绳末端与人之间的距离不能改变过大，因此鼓的初始位置离水平面不能过低，本文限定深度与绳长之比满足$h:l\leq 1:10$。使用方案等级作为评价指标，方案等级越小，说明单人用力大小与占地面积综合看越小，则认为该方案越佳。
 \begin{equation}
@@ -167,10 +169,16 @@ l=\frac{l_0}{2\sin\frac{\pi}{n}}
 
 \subsection{问题二}
 	\subsubsection{问题分析与建模思路}
-
+通过对问题二的初步分析，我们发现，若对队员发力时机和力度的取值不作任何控制，得到其与鼓面倾角的关系将会是一个非常复杂的函数。因此，我们决定先建立队员的力度和发力时机关于某一直线的对称时的函数模型，再考虑非对称时的模型。
 
 	\subsubsection{模型的建立}
-
+(一）对称模型 \par
+在建模过程中，我们忽略鼓的平动的影响，并且认为队员对球施加的力为恒力。
+对称模型分为如下三种：\par
+（1）队员人数是偶数个，用力分布关于这些队员构成的正多边形主对角线对称；\par
+（2）队员人数是偶数个，用力分布关于这些队员构成的正多边形对边中点的连线对称；\par
+（3）队员人数是奇数个，用力分布关于正多边形的某条对称轴对称。\par
+在这三种情况下，由于对称性，我们发现鼓将始终绕同一个轴进行定轴转动，得到方程。
 
 	\subsubsection{模型的求解}
 

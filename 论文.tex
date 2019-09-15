@@ -6,7 +6,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{url}   % 网页链接
 \usepackage{subcaption} % 子标题
-\title{全国大学生数学建模竞赛编写的 \LaTeX{} 模板}
+\title{多人协作同心鼓的优化模型}
 \tihao{A}
 \baominghao{4321}
 \schoolname{XX大学}
@@ -22,118 +22,54 @@
 
  \maketitle
  \begin{abstract}
-cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨在让大家专注于 论文的内容写作, 而不用花费过多精力在格式的定制和调整上. 本手册是相应的参考, 其 中提供了一些环境和命令可以让模板的使用更为方便. 同时需要注意, 使用者需要有一 定的 \LaTeX{} 的使用经验, 至少要会使用常用宏包的一些功能, 比如参考文献，数学公式，图片使用，列表环境等等. 例子文件参看 \texttt{example.tex}.
 
 
 
-我们模板已经快速地进行了相应的格式调整。
 
-欢迎大家到QQ群里沟通交流：91940767/478023327/640633524。我们也开通了问答区交流 \LaTeX{}技术：\url{https://wenda.latexstudio.net}，欢迎大家前来交流，有问题就来这里，与大神零距离。
 
-\uwave{关注我们的微信公众号}：
-
-\centerline{\includegraphics[width=7cm]{gongzhonghao2}}
 
 \keywords{\TeX{}\quad  图片\quad   表格\quad  公式}
 \end{abstract}
 
-%目录  2019 明确不要目录，我觉得这个规定太好了
-%\tableofcontents
 
-%\newpage
+\section{问题的重述}
+\subsection{问题背景}
 
-\section{模板的基本使用}
+同心鼓是一项团队运动，用以训练团队协作的默契，参加的人需要拉住与鼓相连的绳子末端，使得球在单位时间内在鼓上连续弹跳的次数尽可能的多，因此，球的弹跳高度应该尽量低，即鼓与球相撞时，鼓的速度应尽可能小，而鼓面也应当保持水平，以避免球做斜抛运动而掉出鼓面，这要求队员需一起精准地控制在绳上的用力大小与用力时机。
+同时，该运动有以下规则限制：
+\begin{enumerate}
+    \item 球离鼓面的弹跳高度不能低于40cm
+    \item 参加的人数不少于8人且间距应小于60cm
+    \item 球初始落下的位置为球面上方40cm
+    \item 同心鼓与球有标准的大小与重量要求
+\end{enumerate}
 
-要使用 \LaTeX{} 来完成建模论文，首先要确保正确安装一个 \LaTeX{} 的发行版本。
+
+\subsection{本文需求解的问题}
+\begin{enumerate}
+    \item 在可精确控制情况下，建立模型计算出参加该运动的人数、绳长、用力时机、用力大小的最佳值，以使单位时间内球在鼓面上连续弹跳次数最多。
+    \item 建立队员用力大小、用力时机与鼓面倾角之间的关系的模型，根据所给的数据，计算出相应的鼓面倾角。
+    \item 考虑问题二中出现的鼓面倾斜情况，相应地调整问题一的策略。
+    \item 在可精确控制情况下，根据具体给出的鼓面倾斜数据，计算出要使球恢复竖直弹跳，队员应当用力的时机与大小。
+\end{enumerate}
+
+\section{模型的假设}
 
 \begin{itemize}
-    \item Mac 下可以使用 Mac\TeX{} ；
-    \item Linux 下可以使用 \TeX{}Live ；
-    \item windows 下可以使用 \TeX{}Live 或者 Mik\TeX{} ;
+    \item 鼓面与球面光滑，鼓与球之间没有摩擦。
+    \item 每个人的持绳高度相同。
+    \item 绳子没有弹性
+	\item 队员站位不变且间距都相等
+	\item 碰撞过程时间不计
+	\item 空气阻力不计
+	\item 鼓与球间为完全弹性碰撞
+	\item 球初始位置参照的鼓面高度为绳子水平时的鼓面高度
 \end{itemize}
 
-具体安装可以参考 \href{https://github.com/OsbertWang/install_latex/releases/download/v4.6/Install-LaTeX.pdf}{Install-LaTeX.pdf} 或者其它靠谱的文章。另外可以安装一个易用的编辑器，例如 \href{https://github.com/texstudio-org/texstudio/releases/download/2.12.16/texstudio-2.12.16-win-qt5.exe}{\TeX{}studio} 。
-
-使用该模板前，请阅读模板的使用说明文档。下面给出模板使用的大概样式。
 
 
+\section{变量的说明}
 
-根据要求，电子版论文提交时需去掉封面和编号页。可以加上 \verb|withoutpreface|  选项来实现，即：
-
-这样就能实现了。打印的时候有超链接的地方不需要彩色，可以加上 \verb|bwprint| 选项。
-
-另外目录也是不需要的，将 \verb|\tableofcontents| 注释或删除，目录就不会出现了。
-
-团队的信息填入指定的位置，并且确保信息的正确性，以免因此白忙一场。
-
-编译记得使用 \verb|xelatex|，而不是用 \verb|pdflatex|。在命令行编译的可以按如下方式编译：
-
-或者使用 \verb|latexmk| 来编译，更推荐这种方式。
-
-
-下面给出写作与排版上的一些建议。
-
-\section{图片}
-
-建模中不可避免要插入图片。图片可以分为矢量图与位图。位图推荐使用 \verb|jpg,png| 这两种格式，避免使用 \verb|bmp| 这类图片，容易出现图片插入失败这样情况的发生。矢量图一般有 \verb|pdf,eps| ，推荐使用 \verb|pdf|  格式的图片，尽量不要使用 \verb|eps| 图片，理由相同。
-
-注意图片的命名，避免使用中文来命名图片，可以用英文与数字的组合来命名图片。避免使用\verb|1,2,3| 这样顺序的图片命名方式。图片多了，自己都不清楚那张图是什么了，命名尽量让它有意义。下面是一个插图的示例代码。
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=.6\textwidth]{smokeblk}
-    \caption{电路图}
-    \label{fig:circuit-diagram}
-\end{figure}
-
-注意 \verb|figure| 环境是一个浮动体环境，图片的最终位置可能会跑动。\verb|[!h]| 中的 \verb|h| 是 here 的意思， \verb|!| 表示忽略一些浮动体的严格规则。另外里面还可以加上 \verb|btp| 选项，它们分别是 bottom, top, page 的意思。只要这几个参数在花括号里面，作用是不分先后顺序的。page 在这里表示浮动页。
-
-\verb|\label{fig:circuit-diagram}| 是一个标签，供交叉引用使用的。例如引用图片 \verb|\cref{fig:circuit-diagram}| 的实际效果是\cref{fig:circuit-diagram}。图片是自动编号的，比起手动编号，它更加高效。\verb|\cref{label}| 由 \verb|cleveref| 宏包提供，比普通的 \verb|\ref{label}| 更加自动化。 \verb|label| 要确保唯一，命名方式推荐用图片的命名方式。
-
-图片并排的需求解决方式多种多样，下面用 \verb|minipage| 环境来展示一个简单的例子。注意，以下例子用到了 \verb|subcaption| 命令，需要加载 subcaption 宏包。
-
-\begin{figure}
-    \centering
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-a}
-    \end{minipage}
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-b}
-    \end{minipage}
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-c}
-    \end{minipage}
-    \caption{多图并排示例}
-    \label{fig:sample-figure}
-\end{figure}
-这相当于整体是一张大图片，大图片引用是\cref{fig:sample-figure}，子图引用别分是\cref{fig:sample-figure-a}、\cref{fig:sample-figure-b}、\cref{fig:sample-figure-c}。
-
-如果原本两张图片的高度不同，但是希望它们缩放后等高的排在同一行，参考这个例子：
-\begin{figure}
-    \centering
-    \begin{minipage}[c]{0.48\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{cat}
-        \subcaption{一只猫}
-    \end{minipage}
-    \begin{minipage}[c]{0.48\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{smokeblk}
-        \subcaption{电路图}
-    \end{minipage}
-    \caption{多图并排示例}
-\end{figure}
-
-\section{绘制普通三线表格}
-表格应具有三线表格式，因此常用 booktabs宏包，其标准格式如\cref{tab:001}~所示。
 \begin{table}[!htbp]
     \caption{标准三线表格}\label{tab:001} \centering
     \begin{tabular}{cccc}
@@ -149,276 +85,55 @@ cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨�
 
 
 
-\bigskip
 
-table环境是一个将表格嵌入文本的浮动环境。tabular环境的必选参数由每列对应一个格式字符所组成：c表示居中，l表示左对齐，r表示右对齐，其总个数应与表的列数相同。此外，\verb|@{文本}|可以出现在任意两个上述的列格式之间，其中的文本将被插入每一行的同一位置。表格的各行以\verb|\\|分隔，同一行的各列则以\&分隔。 \verb|\toprule| 、\verb|\midrule| 和 \verb|\bottomrule| 三个命令是由booktabs宏包提供的，其中 \verb|\toprule| 和 \verb|\bottomrule| 分别用来绘制表格的第一条（表格最顶部）和第三条（表格最底部）水平线， \verb|\midrule| 用来绘制第二条（表头之下）水平线，且第一条和第三条水平线的线宽为 1.5pt ，第二条水平线的线宽为 1pt 。引用方法与图片的相同。
+\section{模型的建立与求解}
 
-\section{公式}
+%问题一
+\subsection{问题一}
+	\subsubsection{问题分析与建模思路}
+对于问题一，要使得单位时间内球弹跳次数尽量多，则应使得球与鼓碰撞后的速度尽可能地小，即使球的弹跳高度尽可能低，而在球的弹跳高度有最低限制的情况下，显然球的弹跳高度应当恰为限制的最低高度，可达到最优结果。
+但同时由于题目没有限定人数与绳长，在有球弹跳的最优高度的情况下，人数与绳长的组合可以有无限种，而在实际情况下，人数与绳长都是有限的，不可能达到无限多或无限长，因此为了评价不同的人数与绳长组合的方案，本文以单人用力大小和用地面积为评价标准，认为单人用力大小与用地面积越小时，该方案越佳。
 
-数学建模必然涉及不少数学公式的使用。下面简单介绍一个可能用得上的数学环境。
+	\subsubsection{模型的建立}
+为了使每个人的用力都尽可能小，本文首先设定所有人的用力大小、时机、方向相同，鼓在向上运动的速度最大时与球相撞，队员按照周期用力，
+同时，人数不可能无限增加，因此只讨论n小于等于20时的情况；人的手臂长度也是有限的，在拉绳时绳末端与人之间的距离不能改变过大，因此鼓的初始位置离水平面不能过低，本文限定绳长与深度之比满足：。本文设计的评价指标为：方案等级=单人的用力大小绳长2，当方案等级越小时，认为该方案越佳。
+对鼓进行受力分析，如图所示：
+因为绳与水平面的夹角极小，可近似认为人与鼓间距离即为绳长，列出方程如下：
+球下落时与鼓相撞的时间方程如下：
+球与鼓之间为完全弹性碰撞，根据动量守恒可列出方程如下：
+人的间距不能小于60cm，则可列出以下方程：
+联立后则可列出二次方程如下：
 
-首先是行内公式，例如 $ \theta $ 是角度。行内公式使用 \verb|$  $| 包裹。
+	\subsubsection{模型的求解}
 
-行间公式不需要编号的可以使用 \verb|\[  \]| 包裹，例如
-\[
-E=mc^2
-\]
-其中 $ E $ 是能量，$ m $ 是质量，$ c $ 是光速。
+%问题二
 
-如果希望某个公式带编号，并且在后文中引用可以参考下面的写法：
-\begin{align}
-\sum F  &= n F\cdot \frac{h-s}{l}-M g \\
- &=M\cdot \frac{d^{2}s}{dt^{2}}
-\label{1}
-\end{align}
+\subsection{问题二}
+	\subsubsection{问题分析与建模思路}
 
-\begin{equation}
-M\cdot\frac{d^{2}s}{dt^{2}}+\frac{nF}{l}\cdot s = \frac{nFh}{l}-Mg
-\label{2}
-\end{equation}
 
-\begin{equation}
-s=k_1\cos\left (  \sqrt{ \frac{nF}{lm}} t\right ) +k_2\sin\left ( \sqrt{\frac{nF}{lm}} t\right ) +h-\frac{Mgl}{nF}  
-\end{equation}
+	\subsubsection{模型的建立}
 
 
-\begin{equation}
-s=\left ( \frac{Mgl}{nF}-h \right )\cos\left (  \sqrt{ \frac{nF}{lm}} t\right ) +h-\frac{Mgl}{nF}  
-\end{equation}
+	\subsubsection{模型的求解}
 
+%问题三
+\subsection{问题三}
+	\subsubsection{问题分析与建模思路}
 
-\begin{equation}
-\sqrt{\frac{nF}{lM}}\left ( \frac{Mgl}{nF}-h \right )=\frac{m\sqrt{2g\left ( h_0+h-\frac{Mgl}{nF} \right )}}{M}
-\end{equation}
 
-\begin{equation}
-mv-Mu=-m{v}'+M{u}'
-\end{equation}
+	\subsubsection{模型的建立}
 
-\begin{equation}
-v+u={u}'+{v}'
-\end{equation}
 
-\begin{equation}
-u=\frac{mv}{M}
-\end{equation}
+	\subsubsection{模型的求解}
 
+%模型的评价与推广
+\section{模型的评价与推广}
 
-$\iint \limits_{ x^{2}+z^{2}=R^{2} \\ -d\leq y\leq d }$\\
-
-$\iint \limits_{ \substack{x^{2}+z^{2}=R^{2} \\ -d\leq y\leq d }} \rho {d}s\cdot\left ( x^2+y^2 \right )
-=\iint \limits_{\left [ 0,2\pi \right ] \times\left [ -d,d \right ] } \rho R\left ( R^2\cos^2\theta +y^2 \right ){d}\theta {d}y
-=\frac{MR^2}{2}+\frac{Md^2}{3}  $
-\\
-%2.1 
-$
-\overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\
-$
-
-$\overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\$
-
-$\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right ) \\$
-
-$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\$
-$C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi + F_0 R\sin\varphi- F_\frac{n}{2} R\sin\varphi
- \\ $
-$D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_0R\cos\varphi-F_\frac{a}{2}R\cos\varphi 
-\\$
-$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
-$
-
-%2.2
-
-
-$\overrightarrow{OA_k}=\left ( R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos \psi ,R\sin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right ),R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin \psi \right ) \\$
-
-$\overrightarrow{F_k}=\left ( F_k\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\\cos\varphi ,F_ksin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi ,F_k\sin\varphi  \right ) \\$
-
-$\left ( \overrightarrow{F_k} \times \overrightarrow{OA_k}\right )|_y=F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\left ( \sin\varphi\cos\psi-\cos\varphi\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\psi \right )\\$
-
-$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin\psi   \\$
-
-$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\$
-$C=2\sum_{k=1}^{\frac{n}{2}}F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\varphi \\ $
-$D=2\sum_{k=1}^{\frac{n}{2}}F_kR\cos^2\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi$
-\\
-
-
-%2.3
-
-$
-\overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\$
-
-$\overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\$
-
-$\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right ) \\$
-
-$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\$
-$C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi+F_kR\sin\varphi \\ $
-$D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_k R\cos\varphi $
-\\
-$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin\psi
-$
-
-%以上为目前所有公式，单个公式需用符号隔开
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-多行公式有时候希望能够在特定的位置对齐，以下是其中一种处理方法。
-\begin{align}
-P & = UI \\
-& = I^2R
-\end{align}
-\verb|&| 是对齐的位置， \verb|&| 可以有多个，但是每行的个数要相同。
-
-
-
-分段函数这些可以用 \verb|case| 环境，但是它要放在数学环境里面。
-\[
-f(x) =
-    \begin{cases}
-        0 &  x \text{为无理数} ,\\
-        1 &  x \text{为有理数} .
-    \end{cases}
-\]
-在数学环境里面，字体用的是数学字体，一般与正文字体不同。假如要公式里面有个别文字，则需要把这部分放在 \verb|text| 环境里面，即 \verb|\text{文本环境}| 。
-
-公式中个别需要加粗的字母可以用 \verb|$\bm{math symbol}$| 。如 $ \alpha a\bm{\alpha a} $ 。
-
-以上仅简单介绍了基础的使用，对于更复杂的需求，可以阅读相关的宏包手册，如 \href{http://texdoc.net/texmf-dist/doc/latex/amsmath/amsldoc.pdf}{amsmath}。
-
-希腊字母这些如果不熟悉，可以去查找符号文件 \href{http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf}{symbols-a4.pdf} ，也可以去 \href{http://detexify.kirelabs.org/classify.html}{detexify} 网站手写识别。另外还有数学公式识别软件 \href{https://mathpix.com/}{mathpix} 。
-
-下面简单介绍一下定理、证明等环境的使用。
-\begin{definition}
-    定义环境
-    \label{def:nosense}
-\end{definition}
-\cref{def:nosense}除了告诉你怎么使用这个环境以外，没有什么其它的意义。
-
-除了 definition 环境，还可以使用 theorem 、lemma、corollary、assumption、conjecture、axiom、principle、problem、example、proof、solution 这些环境，根据论文的实际需求合理使用。
-
-\begin{theorem}
-    这是一个定理。
-    \label{thm:example}
-\end{theorem}
-由\cref{thm:example}我们知道了定理环境的使用。
-
-\begin{lemma}
-    这是一个引理。
-    \label{lem:example}
-\end{lemma}
-由\cref{lem:example}我们知道了引理环境的使用。
-
-\begin{corollary}
-    这是一个推论。
-    \label{cor:example}
-\end{corollary}
-由\cref{cor:example}我们知道了推论环境的使用。
-
-\begin{assumption}
-    这是一个假设。
-    \label{asu:example}
-\end{assumption}
-由\cref{asu:example}我们知道了假设环境的使用。
-
-\begin{conjecture}
-    这是一个猜想。
-    \label{con:example}
-\end{conjecture}
-由\cref{con:example}我们知道了猜想环境的使用。
-
-\begin{axiom}
-    这是一个公理。
-    \label{axi:example}
-\end{axiom}
-由\cref{axi:example}我们知道了公理环境的使用。
-
-\begin{principle}
-    这是一个定律。
-    \label{pri:example}
-\end{principle}
-由\cref{pri:example}我们知道了定律环境的使用。
-
-\begin{problem}
-    这是一个问题。
-    \label{pro:example}
-\end{problem}
-由\cref{pro:example}我们知道了问题环境的使用。
-
-\begin{example}
-    这是一个例子。
-    \label{exa:example}
-\end{example}
-由\cref{exa:example}我们知道了例子环境的使用。
-
-\begin{proof}
-    这是一个证明。
-    \label{prf:example}
-\end{proof}
-由\cref{prf:example}我们知道了证明环境的使用。
-
-\begin{solution}
-    这是一个解。
-    \label{sol:example}
-\end{solution}
-由\cref{sol:example}我们知道了解环境的使用。
-
-
-
-\section{其它小功能}
-\subsection{脚注}
-
-利用 \verb|\footnote{具体内容}| 可以生成脚注\footnote{脚注可以补充说明一些东西}。
-
-\subsection{部分特殊符号的输入}
-
-每门编程语言都会把部分符号拿来使用，要输出符号本身就需要转义， \TeX{}也不例外。
-
-
-\subsection{无序列表与有序列表}
-
-无序列表是这样的：
-\begin{itemize}
-    \item one
-    \item two
-    \item ...
-\end{itemize}
-
-有序列表是这样子的：
-\begin{enumerate}
-    \item one
-    \item two
-    \item ...
-\end{enumerate}
-
-\subsection{字体加粗与斜体}
-
-如果想强调部分内容，可以使用加粗的手段来实现。加粗字体可以用 \verb|\textbf{加粗}| 来实现。例如： \textbf{这是加粗的字体。 This is bold fonts} 。
-
-中文字体没有斜体设计，但是英文字体有。\textit{斜体 Italics}。
-
-\section{参考文献与引用}
-
-参考文献对于一篇正式的论文来说是必不可少的，在建模中重要的参考文献当然应该列出。\LaTeX{}在这方面的功能也是十分强大的，下面进介绍一个比较简单的参考文献制作方法。有兴趣的可以学习 \verb|bibtex| 或 \verb|biblatex| 的使用。
-
-\LaTeX{}的入门书籍可以看《\LaTeX{}入门》\cite{liuhaiyang2013latex}。这是一个简单的引用，用 \verb|\cite{bibkey}| 来完成。要引用成功，当然要维护好 bibitem 了。下面是个简单的例子。
-
-\newpage
 
 %参考文献
+\section{参考文献}
+
 \begin{thebibliography}{9}%宽度9
     \bibitem[1]{liuhaiyang2013latex}
     刘海洋.
@@ -428,7 +143,110 @@ f(x) =
     全国大学生数学建模竞赛论文格式规范 (2019 年 9 月 12 日修改).
 \end{thebibliography}
 
-\newpage
+
+
+
+
 
 
 \end{document} 
+
+%无序列表是这样的：
+%\begin{itemize}
+%    \item one
+%    \item two
+%    \item ...
+%\end{itemize}
+%
+%有序列表是这样子的：
+%\begin{enumerate}
+%    \item one
+%    \item two
+%    \item ...
+%\end{enumerate}
+
+
+
+%下面简单介绍一下定理、证明等环境的使用。
+%\begin{definition}
+%    定义环境
+%    \label{def:nosense}
+%\end{definition}
+%\cref{def:nosense}除了告诉你怎么使用这个环境以外，没有什么其它的意义。
+%
+%除了 definition 环境，还可以使用 theorem 、lemma、corollary、assumption、conjecture、axiom、principle、problem、example、proof、solution 这些环境，根据论文的实际需求合理使用。
+%
+%\begin{theorem}
+%    这是一个定理。
+%    \label{thm:example}
+%\end{theorem}
+%由\cref{thm:example}我们知道了定理环境的使用。
+%
+%\begin{lemma}
+%    这是一个引理。
+%    \label{lem:example}
+%\end{lemma}
+%由\cref{lem:example}我们知道了引理环境的使用。
+%
+%\begin{corollary}
+%    这是一个推论。
+%    \label{cor:example}
+%\end{corollary}
+%由\cref{cor:example}我们知道了推论环境的使用。
+%
+%\begin{assumption}
+%    这是一个假设。
+%    \label{asu:example}
+%\end{assumption}
+%由\cref{asu:example}我们知道了假设环境的使用。
+%
+%\begin{conjecture}
+%    这是一个猜想。
+%    \label{con:example}
+%\end{conjecture}
+%由\cref{con:example}我们知道了猜想环境的使用。
+%
+%\begin{axiom}
+%    这是一个公理。
+%    \label{axi:example}
+%\end{axiom}
+%由\cref{axi:example}我们知道了公理环境的使用。
+%
+%\begin{principle}
+%    这是一个定律。
+%    \label{pri:example}
+%\end{principle}
+%由\cref{pri:example}我们知道了定律环境的使用。
+%
+%\begin{problem}
+%    这是一个问题。
+%    \label{pro:example}
+%\end{problem}
+%由\cref{pro:example}我们知道了问题环境的使用。
+%
+%\begin{example}
+%    这是一个例子。
+%    \label{exa:example}
+%\end{example}
+%由\cref{exa:example}我们知道了例子环境的使用。
+%
+%\begin{proof}
+%    这是一个证明。
+%    \label{prf:example}
+%\end{proof}
+%由\cref{prf:example}我们知道了证明环境的使用。
+%
+%\begin{solution}
+%    这是一个解。
+%    \label{sol:example}
+%\end{solution}
+%由\cref{sol:example}我们知道了解环境的使用。
+%
+
+
+%
+%\subsection{字体加粗与斜体}
+%
+%如果想强调部分内容，可以使用加粗的手段来实现。加粗字体可以用 \verb|\textbf{加粗}| 来实现。例如： \textbf{这是加粗的字体。 This is bold fonts} 。
+%
+%中文字体没有斜体设计，但是英文字体有。\textit{斜体 Italics}。

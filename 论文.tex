@@ -164,7 +164,12 @@ Z=Fl^2
 l=\frac{l_0}{2\sin\frac{\pi}{n}}
 \end{equation}
 	\subsubsection{模型的求解}
-通过matlab制作散点图，可以看到人数小于等于20时，Z基本关于n单调递增，而规则限定n>=8，因此当队员人数为8，绳长为0.78m，每人用力56.3N，绳子低于水平面 m时，
+通过matlab计算得出F的表达式为
+\begin{equation}
+\frac{5.29E4\sin\frac{\pi}{n}+2.50E7\sqrt{\left ( \frac{9.39E8\sin\frac{\pi}{n}}{7.81E12} +\frac{1.75E6\sin\frac{\pi}{n}}{3.90E11}+\frac{1.57E7}{6.25E14}\right )}+7.09E5 }{2.00E3\cdot n}
+\end{equation}
+
+并制作$Fl^{2}$关于$n$的散点图，可以看到人数小于等于20时，$Z$基本关于$n$单调递增，而规则限定$n\geq 8$，因此当队员人数为8，绳长为$0.78m$，每人用力$56.3N$，绳子低于水平面 m时，
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{sandian}
@@ -178,58 +183,186 @@ l=\frac{l_0}{2\sin\frac{\pi}{n}}
 
 \subsection{问题二}
 	\subsubsection{问题分析与建模思路}
-通过对问题二的初步分析，我们发现，若对队员发力时机和力度的取值不作任何控制，得到其与鼓面倾角的关系将会是一个非常复杂的函数。因此，我们决定先建立队员的力度和发力时机关于某一直线的对称时的函数模型，再考虑非对称时的模型。
+对于第二个问题，我们忽略鼓的平动的影响，并且认为队员对球施加的力始终不变，那么，我们发现，这是一个关于鼓绕着它的质心作定点转动的过程。而一般的这种刚体运动由于它的复杂性，难以求解，因此，我们先从队员用力分布关于某一直线对称的情况讨论。因为在这种情况下，由于对称性，我们发现鼓将始终绕同一个轴进行定轴转动，而这是易于讨论并加以求解的。
 
 	\subsubsection{模型的建立}
 (一）对称模型 \par
 在建模过程中，我们忽略鼓的平动的影响，并且认为队员对球施加的力为恒力。
 对称模型分为如下三种：\par
-（1）队员人数是偶数个，用力分布关于这些队员构成的正多边形主对角线对称；
+（1）队员人数是偶数个，用力分布关于这些队员构成的正多边形主对角线对称,则编号如图：
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.5\textwidth]{one}
     \caption{对称模型一}
+
     \label{fig:one}
 \end{figure}\par
-（2）队员人数是偶数个，用力分布关于这些队员构成的正多边形对边中点的连线对称；
+可通过单人用力的矢量与力的作用点与转轴中心的矢量叉乘，计算得出得单人力矩在y轴上分量如下：
+\begin{equation}
+\begin{cases}
+    
+\overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\
+
+
+\overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\end{cases}
+\end{equation}
+得到：
+\begin{equation}
+\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right ) \\
+\end{equation}
+根据刚体定轴转动定律可列出如下方程：
+\begin{equation}
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\end{equation}
+字母的代表如下式子：
+\begin{equation}
+\begin{cases}
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi + F_0 R\sin\varphi- F_\frac{n}{2} R\sin\varphi
+ \\ 
+D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_0R\cos\varphi-F_\frac{a}{2}R\cos\varphi 
+\\
+\end{cases}
+\end{equation}
+
+（2）队员人数是偶数个，用力分布关于这些队员构成的正多边形对边中点的连线对称，则编号如图：
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.5\textwidth]{two}
     \caption{对称模型二}
     \label{fig:two}
 \end{figure}\par
-（3）队员人数是奇数个，用力分布关于正多边形的某条对称轴对称。
+
+可通过单人用力的矢量与力的作用点与转轴中心的矢量叉乘，计算得出得单人力矩在y轴上分量如下：
+\begin{equation}
+\begin{cases}
+    \overrightarrow{OA_k}=\left ( R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos \psi ,R\sin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right ),R\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin \psi \right ) \\
+    \overrightarrow{F_k}=\left ( F_k\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi ,F_ksin\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\end{cases}
+\end{equation}
+得到：
+\begin{equation}
+\left ( \overrightarrow{F_k} \times \overrightarrow{OA_k}\right )|_y=F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\left ( \sin\varphi\cos\psi-\cos\varphi\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\psi \right )\\
+\end{equation}
+根据刚体定轴转动定律可列出如下方程：
+\begin{equation}
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\end{equation}
+字母的代表如下式子：
+\begin{equation}
+\begin{cases}
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}}F_kR\cos\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\sin\varphi \\
+D=-2\sum_{k=1}^{\frac{n}{2}}F_kR\cos^2\left( \frac{2\pi k}{n}-\frac{\pi}{n}\right )\cos\varphi
+\\
+\end{cases}
+\end{equation}
+
+
+（3）队员人数是奇数个，用力分布关于正多边形的某条对称轴对称，编号如图：
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.5\textwidth]{three}
     \caption{对称模型三}
     \label{fig:three}
 \end{figure}\par
-在这三种情况下，由于对称性，我们发现鼓将始终绕同一个轴进行定轴转动，得到方程。
+
+
+可通过单人用力的矢量与力的作用点与转轴中心的矢量叉乘，计算得出得单人力矩在y轴上分量如下：
+\begin{equation}
+\begin{cases}
+   \overrightarrow{OA_k}=\left ( R\cos\frac{2\pi k}{n}\cos \psi ,R\sin\frac{2\pi k}{n},R \cos\frac{2\pi k}{n}\sin\psi \right ) \\
+   \overrightarrow{F_k}=\left ( F_k\cos\frac{2\pi k}{n}\cos\varphi ,F_k\sin\frac{2\pi k}{n}\cos\varphi ,F_k\sin\varphi  \right ) \\
+
+\end{cases}
+\end{equation}
+得到：
+\begin{equation}
+\left ( \overrightarrow{OA_k} \times \overrightarrow{F_k}\right )|_y=F_kR\cos\frac{2\pi k}{n}\left ( \cos\frac{2\pi k}{n}\sin\psi\cos\varphi -\cos\psi\sin\varphi  \right )\\
+\end{equation}
+根据刚体定轴转动定律可列出如下方程：
+\begin{equation}
+A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\end{equation}
+字母的代表如下式子：
+\begin{equation}
+\begin{cases}
+A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\
+C=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos\frac{2\pi k}{n}\sin\varphi+F_kR\sin\varphi \\
+D=2\sum_{k=1}^{\frac{n}{2}-1}F_kR\cos^2\frac{2\pi k}{n}\cos\varphi-F_k R\cos\varphi
+\\
+\end{cases}
+\end{equation}
+
+%有人先发力的模型，这里要排版一下
+
+在有队员并不在0时刻开始用力的时候，我们假设此时所有队员的用力情况在时间中的分布仍然满足上面三种对称情况的一种。\par
+我们先假设只有人提前$t_0$时间用力，由于在所有队员开始发力之前，所有的队员使用的力都是$F_0$，并且它满足
+
+即鼓受力平衡，因此在$\left [ -t_0,0 \right ]$这段时间内，鼓的倾斜角度与时刻的关系是：
+
+\par 而在$\left [ 0,0.1 \right ]$s时间段内，鼓的倾斜角度与时刻的关系满足所有人同时用力的情况的方程，但是由速度和位移不突变，可以得到这一段的初值条件:
+
+\par 而当比赛队员开始用力的时刻还有更多的时候，即还有人提早了更多的时间用力或者有人推迟了用力的情况下，我们类似地也可以给出不同时间段内倾斜角与时刻的关系，并且满足相邻两段的交界时刻处角速度和倾斜角相等的边值条件，这里就不赘述了。
 
 	\subsubsection{模型的求解}
+对于题中所给的情况，我们得到结果如下：
+\par 
 
-%问题三
-\subsection{问题三}
-	\subsubsection{问题分析与建模思路}
 
+(二）不对称模型
+\subsubsection{问题分析与建模思路}
+根据上面的模型以及在给出的数据中的解，我们发现，由于鼓的倾角始终很小，我们可以在允许较小的误差的前提下，认为鼓所受的力矩始终是恒定的，不受鼓的当前姿态的影响。因此，对于用力分布不对称的情况，我们可以近似地用这一简化得到下列关系：\par
+（1）当没有人提前用力时，由角动量定理，我们知道  ，然后根据角加速度和角度的关系，有\par
+（2）当有人提前用力，则：如果有人提前$t_0$时刻用力，则：\par
+由角动量守恒，我们同样可以得到在$\left [ -t_0,0 \right ]$时间段内，角度与时间的关系，然后同样地，在$\left [ 0,0.1 \right ]$时间段内，有\par
+（3）而当比赛队员开始用力的时刻还有更多的时候，即还有人提早了更多的时间用力或者有人推迟了用力的情况下，我们类似地也可以给出不同时间段内倾斜角与时刻的关系，并且满足相邻两段的交界时刻处角速度和倾斜角相等的边界条件，这里就不赘述了。
+对于题目中的第8种情况，由于在-0.1s到0时间段内，我们发现它的受力情况满足对称的条件，因此，我们有\par
+而在$\left [ 0,0.1 \right ]$，此时已经不再满足对称性条件，那么，我们有\par
 
 	\subsubsection{模型的建立}
 
 
 	\subsubsection{模型的求解}
+
+
+
+
+
+ 
+%问题三
+\subsection{问题三}
+	\subsubsection{问题分析与建模思路}
+由上可知在这种情况下，我们发现，如果依然按照理想情况下设计方案，那么，如果有人用力时机和用力大小有少量偏差，那么很可能会使球的上升的速度的大小和方向出现偏差，从而使其竖直分量不足以使球飞至鼓面上方40cm处，使得游戏意外结束。那么，我们需要设置一个更大的球的目标高度，以削弱这种不利的影响。
+
+	\subsubsection{模型的建立与求解}
+那么，我们在第一问的基础上增加设定的高度10cm，从而\par
+（1）在第一次垫球的时候，方程 变化为\par
+（2）以后的垫球中，我们将（1）中的方程中的 改变为 
+求解就能得到F = 
 
 
 %问题四
 \subsection{问题四}
 	\subsubsection{问题分析与建模思路}
-
+从前面的结果来看，在鼓出现偏移的过程中，只要偏转角度不超过1度，我们就可以近似地认为：鼓在这一过程中做匀加速转动。
 
 	\subsubsection{模型的建立}
+因此，如图所示：我们只需要让1号位和2号位的人使用的力比稳定状态所需要的力F0各多出deltaF1和deltaF2，让 6号位和7号位的人使用的力各减小deltaF1和deltaF2即可。
+
+由于我们可以近似地认为球与鼓发生碰撞之后，球在鼓的中心轴方向上的分速度大小不变，因此此时鼓的中心轴的倾斜方向与球的速度的倾斜方向相同，倾斜角度是球速倾斜角度的一半，即0.5度，因此10个人的合力矩的大小M满足：
+
+又因为倾斜方向如上，故
+%2*deltaF1*R*sin(fai)和2*deltaF2*R*sin(fai)，M三者构成矢量三角形，故由正弦定理：
 
 
 	\subsubsection{模型的求解}
+通过matlab计算以上方程，我们可以得到
 
+因此，10个人使用的力的大小应分别为      ，开始用力的时机是球将要落到鼓面上前0.1秒。
 %模型的评价与推广
 \section{模型的评价与推广}
 

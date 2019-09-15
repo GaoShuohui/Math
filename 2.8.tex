@@ -1,0 +1,193 @@
+\documentclass{article}
+% 这里是导言区
+\begin{document}
+hello, world!
+$\alpha$
+x
+
+\begin{equation}
+M\cdot\frac{d^{2}s}{dt^{2}}+\frac{nF}{l}\cdot s = \frac{nFh}{l}-Mg
+\label{2}
+\end{equation}
+
+\begin{equation}
+s=k_1\cos\left (  \sqrt{ \frac{nF}{lm}} t\right ) +k_2\sin\left ( \sqrt{\frac{nF}{lm}} t\right ) +h-\frac{Mgl}{nF}  
+\end{equation}
+
+
+\begin{equation}
+s=\left ( \frac{Mgl}{nF}-h \right )\cos\left (  \sqrt{ \frac{nF}{lm}} t\right ) +h-\frac{Mgl}{nF}  
+\end{equation}
+
+
+\begin{equation}
+\sqrt{\frac{nF}{lM}}\left ( \frac{Mgl}{nF}-h \right )=\frac{m\sqrt{2g\left ( h_0+h-\frac{Mgl}{nF} \right )}}{M}
+\end{equation}
+
+\begin{equation}
+mv-Mu=-m{v}'+M{u}'
+\end{equation}
+
+\begin{equation}
+v+u={u}'+{v}'
+\end{equation}
+
+\begin{equation}
+u=\frac{mv}{M}
+\end{equation}	
+\\
+2.5 A
+
+$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\$
+$C=2\sum\limits_{k=1}^{\frac{n}{2}-1}F_{k,0}R\cos\frac{2\pi k}{n}\cos\varphi 
+	+ F_{0,0} R\sin\varphi
+	- F_{\frac{n}{2},0} R\sin\varphi
+ \\ $
+$D=-2\sum\limits_{k=1}^{\frac{n}{2}-1}F_{k,0} R\cos^2\frac{2\pi k}{n}\sin\varphi
+	-F_{0,0} R\cos\varphi
+	-F_{\frac{n}{2},0} R\cos\varphi 
+\\$
+$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\\$
+\\
+2.5 B
+
+$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\ $
+$C= 2\sum\limits_{k=1}^{\frac{n}{2}}F_{k,0}R\cos\left ( \frac{2\pi k}{n}-\frac{\pi}{n} \right)\sin\varphi
+\\ $
+$D=-2\sum\limits_{k=1}^{\frac{n}{2}}F_{k,0} R\cos^2\left ( \frac{2\pi k}{n}-\frac{\pi}{n} \right )\cos\varphi
+\\ $
+$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\\$
+\\
+2.5 C
+
+$A=M\left ( \frac{R^2}{2}+\frac{d^2}{3} \right ) \\$
+$C=2\sum\limits_{k=1}^{\frac{n}{2}-1}F_{k,0}R\cos\frac{2\pi k}{n}\sin\varphi 
+	+ F_{0,0} R\sin\varphi
+ \\ $
+$D=-2\sum\limits_{k=1}^{\frac{n}{2}-1}F_{k,0} R\cos^2\frac{2\pi k}{n}\cos\varphi
+	-F_{0,0} R\cos\varphi
+\\$
+$A\cdot \frac{d^{2}\psi }{dt^{2} }=C\cos\psi+D\sin \psi
+\\$
+
+
+2.8
+
+%M是力矩
+
+$M= \left ( 
+	\sum\limits_{k=1}^{n}F_{k,0} R \sin\varphi \sin \left ( \frac{2\pi k}{n}-\frac{2\pi}{n} \right ) ,
+	\sum\limits_{k=1}^{n}F_{k,0} R \sin\varphi \cos \left ( \frac{2\pi k}{n}-\frac{2\pi}{n} \right ) ,
+	0 \right )
+\\ $
+%从而
+$\psi_0 = \frac{M_0}{2J}\cdot \Delta t^2
+\\$
+$\omega_0  = \frac{M_0}{J}\cdot \Delta t
+\\$
+%0-0.1s时间内
+$
+\vec{\psi} = \left ( 
+	\vec{\omega_0}\cdot \Delta t + \vec{\frac{M}{2J}}\cdot \Delta t^2
+	\right ) \bigoplus \psi_0 
+\\$
+% \bigoplus：旋转的复合
+
+%令
+$M  = 2 \Delta F_0 R \sin\varphi \cos \frac{3\pi}{8}
+\\$
+$G  = \omega_0 \Delta t
+\\$
+$H  = \frac{M}{2J}\cdot \Delta t^2
+\\$
+
+%旋转轴：
+
+$\left ( 
+	G \cos \frac{3\pi}{8}+H \cos \frac{5\pi}{8},
+	G \sin \frac{3\pi}{8}+H \sin \frac{5\pi}{8},0
+\right )
+\\$
+%设转轴为
+$ \left ( K,L,0 \right )
+\\$
+%其中
+$ \Delta \psi  = \sqrt{G^2+H^2+\sqrt2 GH}
+\\$
+$K  =  \frac {\left ( G-H \right ) \cos \frac{3\pi}{8} }{\left | \Delta\psi \right | }
+\\$
+$L  =  \frac {\left ( G+H \right ) \sin \frac{3\pi}{8} }{\left | \Delta\psi \right | }
+\\$
+
+%用a表示Δpsi所代表的四元数
+%用b表示psi_0所代表的四元数
+
+$ a = \cos\frac {\Delta \psi}{2} 
+		+K \sin\frac {\Delta \psi}{2} \cdot i 
+		+L \sin\frac {\Delta \psi}{2} \cdot j
+\\$
+$ b = \cos\frac {\varphi_0}{2} 
+		+\cos \frac{3\pi}{8} \sin\frac {\varphi_0}{2} \cdot i 
+		+\sin \frac{3\pi}{8} \sin\frac {\varphi_0}{2} \cdot j
+\\$
+
+%ψ的表达式：（对应的四元数）
+
+$ \psi=a\circ b \\$
+$		= \cos\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} 
+		 -\sin\frac{\Delta \psi}{2} \sin\frac{\varphi_0}{2} 
+			\left (
+				\cos \frac{3\pi}{8} \cdot K - \sin \frac{3\pi}{8}\cdot L
+			\right ) \\$
+
+$		+ \left (
+				\sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cdot K 
+			+  \sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cos\frac{3\pi}{8} 
+\right )	\cdot i	\\$
+
+$		+ \left (
+				\sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cdot L
+			+  \sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \sin\frac{3\pi}{8} 
+\right )	\cdot j	\\$
+
+$		+ \left [
+				\sin\frac{\Delta \psi}{2} \sin\frac{\varphi_0}{2} 
+				\left (
+					\sin \frac{3\pi}{8} \cdot K - \cos \frac{3\pi}{8}\cdot L
+				\right )
+			\right ]	\cdot k	\\$
+%记为
+$ \psi=P+iQ+jS+kU \\$
+%其中（大括号）
+$	 P = \cos\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} 
+		 -\sin\frac{\Delta \psi}{2} \sin\frac{\varphi_0}{2} 
+			\left (
+				\cos \frac{3\pi}{8} \cdot K - \sin \frac{3\pi}{8}\cdot L
+			\right ) \\$
+
+$		Q =
+				\sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cdot K 
+			+  \sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cos\frac{3\pi}{8} 
+	\\$
+
+$		S =
+				\sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \cdot L
+			+  \sin\frac{\Delta \psi}{2} \cos\frac{\varphi_0}{2} \sin\frac{3\pi}{8} 
+	\\$
+
+$		U =
+				\sin\frac{\Delta \psi}{2} \sin\frac{\varphi_0}{2} 
+				\left (
+					\sin \frac{3\pi}{8} \cdot K - \cos \frac{3\pi}{8}\cdot L
+				\right )
+	\\$
+
+%所以ψ（的大小）等于
+$ \psi=2\arccos{P} \\$
+%旋转轴上一点的坐标为
+$ (Q,S,U) \\$
+%通过求解计算，得出PQSU等于……，所以我们可以近似地认为旋转轴为y轴(0,S,0)
+%cos的值为arccosP
+\end{document}

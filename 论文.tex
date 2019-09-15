@@ -117,7 +117,7 @@ mv-Mu=-m{v}'+M{u}'    \\
 \end{equation}
 
 
-可得 $u=-{u}'$, $v=-{v}'$ 球与鼓速度方向反转，速度大小不变，鼓做减速运动，球做上抛运动；在时间段$ \left [ T-t,T \right ]$内，人对绳拉力为$F_0$，鼓静止，球做上抛运动直至最高点，周期为$T$。可列运动方程如下：
+可得 $u=-{u}'$, $v=-{v}'$ ,即碰撞后球与鼓速度方向反转，速度大小不变，鼓做减速运动，球做上抛运动；在时间段$ \left [ T-t,T \right ]$内，人对绳拉力为$F_0$，鼓静止，球做上抛运动直至最高点，周期为$T$。可列运动方程如下：
 
 \begin{equation}
 \begin{cases}
@@ -138,7 +138,7 @@ s'(\frac{T}{2}-t)=0
 
 
 \par
-同时，人数不可能无限增加，因此只讨论$n\leq 20$时的情况；人的手臂长度也是有限的，在拉绳时绳末端与人之间的距离不能改变过大，因此鼓的初始位置离水平面不能过低，本文限定深度与绳长之比满足$h:l\leq 1:10$。使用方案等级作为评价指标，方案等级越小，说明单人用力大小与占地面积综合看越小，则认为该方案越佳。
+同时，人数不可能无限增加，因此只讨论$n\leq 20$时的情况；人的手臂长度也是有限的，在拉绳时绳末端与人之间的距离不能改变过大，因此鼓的初始位置离水平面不能过低，本文限定深度与绳长之比满足$h:l\leq 1:10$。使用方案等级$Z$作为评价指标，方案等级越小，说明单人用力大小与占地面积综合看越小，则认为该方案越佳。
 \begin{equation}
 Z=Fl^2
 \end{equation}
@@ -165,6 +165,15 @@ l=\frac{l_0}{2\sin\frac{\pi}{n}}
 \end{equation}
 	\subsubsection{模型的求解}
 通过matlab制作散点图，可以看到人数小于等于20时，Z基本关于n单调递增，而规则限定n>=8，因此当队员人数为8，绳长为0.78m，每人用力56.3N，绳子低于水平面 m时，
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.6\textwidth]{sandian}
+    \caption{散点图}
+    \label{fig:sandian}
+\end{figure}
+
+
+
 %问题二
 
 \subsection{问题二}
@@ -175,9 +184,27 @@ l=\frac{l_0}{2\sin\frac{\pi}{n}}
 (一）对称模型 \par
 在建模过程中，我们忽略鼓的平动的影响，并且认为队员对球施加的力为恒力。
 对称模型分为如下三种：\par
-（1）队员人数是偶数个，用力分布关于这些队员构成的正多边形主对角线对称；\par
-（2）队员人数是偶数个，用力分布关于这些队员构成的正多边形对边中点的连线对称；\par
-（3）队员人数是奇数个，用力分布关于正多边形的某条对称轴对称。\par
+（1）队员人数是偶数个，用力分布关于这些队员构成的正多边形主对角线对称；
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.5\textwidth]{one}
+    \caption{对称模型一}
+    \label{fig:one}
+\end{figure}\par
+（2）队员人数是偶数个，用力分布关于这些队员构成的正多边形对边中点的连线对称；
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.5\textwidth]{two}
+    \caption{对称模型二}
+    \label{fig:two}
+\end{figure}\par
+（3）队员人数是奇数个，用力分布关于正多边形的某条对称轴对称。
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.5\textwidth]{three}
+    \caption{对称模型三}
+    \label{fig:three}
+\end{figure}\par
 在这三种情况下，由于对称性，我们发现鼓将始终绕同一个轴进行定轴转动，得到方程。
 
 	\subsubsection{模型的求解}
